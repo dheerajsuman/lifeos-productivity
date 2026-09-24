@@ -418,6 +418,22 @@ body.light .notes-section textarea {
     }
 
 }
+        .thought-section {
+    margin-top: 35px;
+    background: #151824;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.thought-section h2 {
+    margin-top: 0;
+}
+
+#dailyThought {
+    color: #a8adbd;
+    font-size: 16px;
+    line-height: 1.6;
+}
     </style>
    
 
@@ -530,6 +546,16 @@ body.light .notes-section textarea {
     </div>
 
     <p id="progressText">0 / 5 tasks completed</p>
+
+</div>
+    <!-- Daily Thought -->
+<div class="thought-section">
+
+    <h2>💡 Daily Thought</h2>
+
+    <p id="dailyThought">
+        Stay focused and keep moving forward.
+    </p>
 
 </div>
 
@@ -1034,6 +1060,30 @@ function changeGoal() {
         greeting;
 
 }
+    const thoughts = [
+    "Small progress every day creates big results.",
+    "Focus on what you can accomplish today.",
+    "Consistency is more powerful than motivation.",
+    "Learn something new today.",
+    "Your future is built by what you do today.",
+    "One completed task is better than ten planned tasks.",
+    "Keep learning. Keep building. Keep improving."
+];
+
+
+function updateDailyThought() {
+
+    let randomIndex = Math.floor(
+        Math.random() * thoughts.length
+    );
+
+    document.getElementById("dailyThought").textContent =
+        thoughts[randomIndex];
+
+}
+
+
+updateDailyThought();
 
 updateGreeting();
 renderTasks();
