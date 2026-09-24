@@ -541,8 +541,7 @@ body.light .notes-section textarea {
         <h2 id="productivity">0%</h2>
     </div>
 
-</div></div>
-
+</div>
 <!-- Daily Goal -->
 <div class="goal-section">
 
@@ -631,7 +630,7 @@ body.light .notes-section textarea {
 
 </div>
 <!-- Calendar Section -->
-<div class="calendar-section" id="calendarsection">
+<div class="calendar-section" id="calendarSection">
 
     <div class="calendar-header">
 
@@ -767,6 +766,31 @@ filteredTasks.forEach(function(task) {
 
     taskList.innerHTML += `
             <div class="task">
+            .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 12px;
+    background: #1b1f2e;
+    border-radius: 8px;
+}
+
+.task span {
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.task button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
 
                 <span
                     class="${task.completed ? "completed" : ""}"
@@ -832,18 +856,7 @@ function completeTask(index) {
 }
 
 
-function deleteTask(index) {
-
-    tasks.splice(index, 1);
-
-    saveTasks();
-
-    renderTasks();
-
-    updateStats();
-
-    updateProgress();
-}
+function deleteTask(index)
 function updateStats() {
 
     let totalTasks = tasks.length;
