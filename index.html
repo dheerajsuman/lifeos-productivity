@@ -163,27 +163,27 @@
     <!-- Statistics -->
     <div class="stats">
 
-        <div class="card">
-            <p>🔥 Streak</p>
-            <h2>0 days</h2>
-        </div>
-
-        <div class="card">
-            <p>✅ Completed</p>
-            <h2>0</h2>
-        </div>
-
-        <div class="card">
-            <p>📋 Tasks</p>
-            <h2>0</h2>
-        </div>
-
-        <div class="card">
-            <p>📈 Productivity</p>
-            <h2>0%</h2>
-        </div>
-
+    <div class="card">
+        <p>🔥 Streak</p>
+        <h2>0 days</h2>
     </div>
+
+    <div class="card">
+        <p>✅ Completed</p>
+        <h2 id="completedCount">0</h2>
+    </div>
+
+    <div class="card">
+        <p>📋 Tasks</p>
+        <h2 id="taskCount">0</h2>
+    </div>
+
+    <div class="card">
+        <p>📈 Productivity</p>
+        <h2 id="productivity">0%</h2>
+    </div>
+
+</div>
            <!-- Task Section -->
 <div class="task-section">
 
@@ -304,7 +304,34 @@ function completeTask(index) {
 }
 
 
-function deleteTask(index) {
+function deleteTask(index)
+function updateStats() {
+
+    let totalTasks = tasks.length;
+
+    let completedTasks = tasks.filter(function(task) {
+        return task.completed;
+    }).length;
+
+
+    let productivity = 0;
+
+    if (totalTasks > 0) {
+        productivity = Math.round(
+            (completedTasks / totalTasks) * 100
+        );
+    }
+
+
+    document.getElementById("taskCount").textContent = totalTasks;
+
+    document.getElementById("completedCount").textContent = completedTasks;
+
+    document.getElementById("productivity").textContent =
+        productivity + "%";
+
+}
+    {
 
     tasks.splice(index, 1);
 
