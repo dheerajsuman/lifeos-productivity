@@ -246,6 +246,21 @@
 .notes-section textarea:focus {
     border-color: #5b5ff7;
 }
+        .datetime {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+#clock {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#date {
+    margin-top: 5px;
+    color: #a8adbd;
+    font-size: 15px;
+}
     </style>
    
 
@@ -291,8 +306,15 @@
 
     <h1>Good day 👋</h1>
 
-    <p>Build your day. Build your future.</p>
+<p>Build your day. Build your future.</p>
 
+<div class="datetime">
+
+    <div id="clock">00:00:00</div>
+
+    <div id="date">Loading date...</div>
+
+</div>
 
     <!-- Statistics -->
     <div class="stats">
@@ -672,6 +694,28 @@ notes.addEventListener("input", function() {
     });
 
 }
+    function updateDateTime() {
+
+    let now = new Date();
+
+    let time = now.toLocaleTimeString();
+
+    let date = now.toLocaleDateString("en-IN", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
+
+    document.getElementById("clock").textContent = time;
+
+    document.getElementById("date").textContent = date;
+
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
 renderTasks();
 
 </script>
