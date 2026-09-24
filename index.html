@@ -220,77 +220,102 @@
     <p>My Personal Productivity Dashboard</p>
 <script>
 
-function addTask() {
+let tasks = JSON.parse(localStorage.getItem("lifeosTasks")) || [];
 
-    let input = document.getElementById("taskInput");
-    let task = input.value;
 
-    if (task === "") {
-        alert("Please enter a task!");
-        return;
-    }
+function saveTasks() {
+
+    localStorage.setItem("lifeosTasks", JSON.stringify(tasks));
+
+}
+
+
+function renderTasks() {
 
     let taskList = document.getElementById("taskList");
 
-    taskList.innerHTML += `
-        <div class="task">
+    taskList.innerHTML = "";
 
-            <span onclick="completeTask(this)">
-                ☐ ${task}
-            </span>
+    tasks.forEach(function(task, index) {
 
-            <button onclick="deleteTask(this)">
-                🗑️
-            </button>
+        taskList.innerHTML += `
+            <div class="task">
 
-        </div>
-    `;
+                <span
+                    class="${task.completed ? "completed" : ""}"
+                    onclick="completeTask(${index})"
+                >
+                    ${task.completed ? "☑" : "☐"} ${task.text}
+                </span>
+
+                <button onclick="deleteTask(${index})">
+                    🗑️
+                </button>
+
+            </div>
+        `;
+
+    });
+
+}
+
+
+function addTask() {
+
+    let input = document.getElementById("taskInput");
+
+    let taskText = input.value.trim();
+
+    if (taskText === "") {
+
+        alert("Please enter a task!");
+
+        return;
+
+    }
+
+
+    tasks.push({
+
+        text: taskText,
+
+        completed: false
+
+    });
+
+
+    saveTasks();
+
+    renderTasks();
 
     input.value = "";
-}
-
-
-function completeTask(task) {
-
-    task.classList.toggle("completed");
 
 }
 
 
-function deleteTask(button) {
+function completeTask(index) {
 
-    button.parentElement.remove();
+    tasks[index].completed = !tasks[index].completed;
+
+    saveTasks();
+
+    renderTasks();
 
 }
-    .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    background: #1b1f2e;
-    padding: 15px;
-    margin-top: 10px;
 
-    border-radius: 8px;
+function deleteTask(index) {
+
+    tasks.splice(index, 1);
+
+    saveTasks();
+
+    renderTasks();
+
 }
 
-.task span {
-    cursor: pointer;
-}
 
-.task button {
-    background: transparent;
-    border: none;
-    color: white;
-
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-}
+renderTasks();
 
 </script>
     
