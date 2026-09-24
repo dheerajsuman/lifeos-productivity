@@ -218,7 +218,33 @@
     <h1>LifeOS</h1>
 
     <p>My Personal Productivity Dashboard</p>
+<script>
 
+function addTask() {
+
+    let input = document.getElementById("taskInput");
+
+    let task = input.value;
+
+    if (task === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    let taskList = document.getElementById("taskList");
+
+    taskList.innerHTML += `
+        <div class="task">
+            <span>☐ ${task}</span>
+        </div>
+    `;
+
+    input.value = "";
+
+}
+
+</script>
+    
 </body>
-
+    
 </html>
