@@ -259,19 +259,35 @@
 
             <h2>LifeOS</h2>
 
-            <nav>
-                <button>🏠 Dashboard</button>
-                <button>✅ Tasks</button>
-                <button>⏰ Routine</button>
-                <button>📅 Calendar</button>
-                <button>📝 Notes</button>
-            </nav>
+           <nav>
+
+    <button onclick="goToSection('dashboard')">
+        🏠 Dashboard
+    </button>
+
+    <button onclick="goToSection('tasks')">
+        ✅ Tasks
+    </button>
+
+    <button onclick="goToSection('routine')">
+        ⏰ Routine
+    </button>
+
+    <button onclick="goToSection('calendarSection')">
+        📅 Calendar
+    </button>
+
+    <button onclick="goToSection('notesSection')">
+        📝 Notes
+    </button>
+
+</nav>
 
         </aside>
 
 
         <!-- Main Content -->
-       <main class="main">
+       <main class="main" id="dashboard">
 
     <h1>Good day 👋</h1>
 
@@ -303,7 +319,7 @@
 
 </div>
            <!-- Task Section -->
-<div class="task-section">
+<div class="task-section" id="task">
 
     <h2>Today's Tasks</h2>
 
@@ -327,7 +343,7 @@
 
 </div>
 <!-- Calendar Section -->
-<div class="calendar-section">
+<div class="calendar-section" id="calendarsection">
 
     <div class="calendar-header">
 
@@ -359,7 +375,7 @@
 
 </div>
            <!-- Daily Routine -->
-<div class="routine-section">
+<div class="routine-section" id="routine">
 
     <h2>Today's Routine</h2>
 
@@ -400,7 +416,7 @@
 
 </div>
            <!-- Notes Section -->
-<div class="notes-section">
+<div class="notes-section" id="notesSection">
 
     <h2>Quick Notes 📝</h2>
 
@@ -647,6 +663,15 @@ notes.addEventListener("input", function() {
     );
 
 });
+    function goToSection(sectionId) {
+
+    let section = document.getElementById(sectionId);
+
+    section.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
 renderTasks();
 
 </script>
