@@ -464,10 +464,9 @@ body.light .notes-section textarea {
         <!-- Main Content -->
        <main class="main" id="dashboard">
 
-    <h1>Good day 👋</h1>
+   <h1 id="greeting">Good day 👋</h1>
 
-<p>Build your day. Build your future.</p>
-
+<p id="subtitle">Build your day. Build your future.</p>
 <div class="datetime">
 
     <div id="clock">00:00:00</div>
@@ -1007,6 +1006,36 @@ function changeGoal() {
     updateProgress();
 
 }
+    function updateGreeting() {
+
+    let hour = new Date().getHours();
+
+    let greeting;
+
+    if (hour < 12) {
+
+        greeting = "Good morning 🌅";
+
+    } else if (hour < 17) {
+
+        greeting = "Good afternoon ☀️";
+
+    } else if (hour < 21) {
+
+        greeting = "Good evening 🌆";
+
+    } else {
+
+        greeting = "Good night 🌙";
+
+    }
+
+    document.getElementById("greeting").textContent =
+        greeting;
+
+}
+
+updateGreeting();
 renderTasks();
 updateStats();
 renderCalendar();
