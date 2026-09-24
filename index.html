@@ -6,6 +6,28 @@
     <title>LifeOS - Productivity Dashboard</title>
 
     <style>
+        .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #151824;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.card p {
+    color: #a8adbd;
+    margin: 0;
+}
+
+.card h2 {
+    margin-top: 10px;
+    font-size: 28px;
+}
 
         body {
             margin: 0;
@@ -86,13 +108,39 @@
 
 
         <!-- Main Content -->
-        <main class="main">
+       <main class="main">
 
-            <h1>Good day 👋</h1>
+    <h1>Good day 👋</h1>
 
-            <p>Build your day. Build your future.</p>
+    <p>Build your day. Build your future.</p>
 
-        </main>
+
+    <!-- Statistics -->
+    <div class="stats">
+
+        <div class="card">
+            <p>🔥 Streak</p>
+            <h2>0 days</h2>
+        </div>
+
+        <div class="card">
+            <p>✅ Completed</p>
+            <h2>0</h2>
+        </div>
+
+        <div class="card">
+            <p>📋 Tasks</p>
+            <h2>0</h2>
+        </div>
+
+        <div class="card">
+            <p>📈 Productivity</p>
+            <h2>0%</h2>
+        </div>
+
+    </div>
+
+</main>
 
     </div>
 
