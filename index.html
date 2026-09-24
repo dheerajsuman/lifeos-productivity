@@ -223,7 +223,6 @@
 function addTask() {
 
     let input = document.getElementById("taskInput");
-
     let task = input.value;
 
     if (task === "") {
@@ -235,12 +234,62 @@ function addTask() {
 
     taskList.innerHTML += `
         <div class="task">
-            <span>☐ ${task}</span>
+
+            <span onclick="completeTask(this)">
+                ☐ ${task}
+            </span>
+
+            <button onclick="deleteTask(this)">
+                🗑️
+            </button>
+
         </div>
     `;
 
     input.value = "";
+}
 
+
+function completeTask(task) {
+
+    task.classList.toggle("completed");
+
+}
+
+
+function deleteTask(button) {
+
+    button.parentElement.remove();
+
+}
+    .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #1b1f2e;
+    padding: 15px;
+    margin-top: 10px;
+
+    border-radius: 8px;
+}
+
+.task span {
+    cursor: pointer;
+}
+
+.task button {
+    background: transparent;
+    border: none;
+    color: white;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
 
 </script>
