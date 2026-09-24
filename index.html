@@ -261,6 +261,54 @@
     color: #a8adbd;
     font-size: 15px;
 }
+        body.light {
+    background: #f4f6fb;
+    color: #171923;
+}
+
+body.light .sidebar {
+    background: #ffffff;
+}
+
+body.light .sidebar button {
+    background: #eef0f6;
+    color: #171923;
+}
+
+body.light .main p {
+    color: #5f6473;
+}
+
+body.light .card,
+body.light .task-section,
+body.light .calendar-section,
+body.light .routine-section,
+body.light .notes-section {
+    background: #ffffff;
+}
+
+body.light .task {
+    background: #eef0f6;
+}
+
+body.light .calendar-day {
+    background: #eef0f6;
+}
+
+body.light .calendar-header button {
+    background: #eef0f6;
+    color: #171923;
+}
+
+body.light .routine-item {
+    background: #eef0f6;
+}
+
+body.light .task-input input,
+body.light .notes-section textarea {
+    background: #f8f9fc;
+    color: #171923;
+}
     </style>
    
 
@@ -297,6 +345,9 @@
     </button>
 
 </nav>
+            <button onclick="toggleTheme()" class="theme-button">
+    🌙 Toggle Theme
+</button>
 
         </aside>
 
@@ -716,6 +767,28 @@ notes.addEventListener("input", function() {
 updateDateTime();
 
 setInterval(updateDateTime, 1000);
+    function toggleTheme() {
+
+    document.body.classList.toggle("light");
+
+    if (document.body.classList.contains("light")) {
+
+        localStorage.setItem("lifeosTheme", "light");
+
+    } else {
+
+        localStorage.setItem("lifeosTheme", "dark");
+
+    }
+
+}
+
+
+if (localStorage.getItem("lifeosTheme") === "light") {
+
+    document.body.classList.add("light");
+
+}
 renderTasks();
 
 </script>
