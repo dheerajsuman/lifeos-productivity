@@ -369,6 +369,55 @@ body.light .notes-section textarea {
 #progressText {
     margin-top: 10px;
 }
+        /* Mobile Responsive Design */
+
+@media (max-width: 768px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: auto;
+        padding: 15px;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .sidebar button {
+        width: auto;
+        margin: 0;
+        flex: 1;
+        min-width: 100px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calendar-weekdays,
+    .calendar {
+        gap: 4px;
+    }
+
+    .calendar-day {
+        min-height: 35px;
+        padding: 6px;
+    }
+
+    .goal-header {
+        gap: 15px;
+    }
+
+}
     </style>
    
 
