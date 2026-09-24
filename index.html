@@ -83,8 +83,53 @@
             color: #a8adbd;
             font-size: 16px;
         }
+        .task-section {
+    margin-top: 35px;
+    background: #151824;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.task-section h2 {
+    margin-top: 0;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+}
+
+.task-input input {
+    flex: 1;
+    padding: 12px;
+
+    background: #0b0d14;
+    color: white;
+
+    border: 1px solid #303548;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.task-input button {
+    padding: 12px 20px;
+
+    background: #5b5ff7;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.task-input button:hover {
+    opacity: 0.85;
+}
 
     </style>
+   
 
 </head>
 <body>
@@ -139,6 +184,30 @@
         </div>
 
     </div>
+           <!-- Task Section -->
+<div class="task-section">
+
+    <h2>Today's Tasks</h2>
+
+    <div class="task-input">
+
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter a task..."
+        >
+
+        <button onclick="addTask()">
+            Add Task
+        </button>
+
+    </div>
+
+    <div id="taskList">
+
+    </div>
+
+</div>
 
 </main>
 
