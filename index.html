@@ -214,6 +214,38 @@
     font-weight: bold;
     color: #a8adbd;
 }
+        .notes-section {
+    margin-top: 35px;
+    background: #151824;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.notes-section textarea {
+    width: 100%;
+    min-height: 180px;
+
+    box-sizing: border-box;
+
+    padding: 15px;
+
+    background: #0b0d14;
+    color: white;
+
+    border: 1px solid #303548;
+    border-radius: 8px;
+
+    resize: vertical;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.notes-section textarea:focus {
+    border-color: #5b5ff7;
+}
     </style>
    
 
@@ -365,6 +397,17 @@
         <span class="routine-time">22:30</span>
         <span>Plan Tomorrow</span>
     </div>
+
+</div>
+           <!-- Notes Section -->
+<div class="notes-section">
+
+    <h2>Quick Notes 📝</h2>
+
+    <textarea
+        id="notes"
+        placeholder="Write your thoughts, ideas, or reminders..."
+    ></textarea>
 
 </div>
 </main>
@@ -592,6 +635,18 @@ function nextMonth() {
     renderCalendar();
 
 }
+    let notes = document.getElementById("notes");
+
+notes.value = localStorage.getItem("lifeosNotes") || "";
+
+notes.addEventListener("input", function() {
+
+    localStorage.setItem(
+        "lifeosNotes",
+        notes.value
+    );
+
+});
 renderTasks();
 
 </script>
