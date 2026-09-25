@@ -774,37 +774,24 @@ filteredTasks.forEach(function(task) {
 
     let index = tasks.indexOf(task);
 
+    taskList.innerHTML += `
+        <div class="task">
 
-    cursor: pointer;
-}
+            <span
+                class="${task.completed ? "completed" : ""}"
+                onclick="completeTask(${index})"
+            >
+                ${task.completed ? "☑" : "☐"} ${task.text}
+            </span>
 
-.completed {
-    text-decoration: line-through;
-    color: #777;
-}
+            <button onclick="deleteTask(${index})">
+                🗑️
+            </button>
 
-.task button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
+        </div>
+    `;
 
-                <span
-                    class="${task.completed ? "completed" : ""}"
-                    onclick="completeTask(${index})"
-                >
-                    ${task.completed ? "☑" : "☐"} ${task.text}
-                </span>
-
-                <button onclick="deleteTask(${index})">
-                    🗑️
-                </button>
-
-            </div>
-        `;
-
-    });
+});
 
 }
 
