@@ -750,48 +750,54 @@ function renderTasks() {
 
     taskList.innerHTML = "";
 
-    let searchText = document.getElementById("taskSearch").value.toLowerCase();
-let filter = document.getElementById("taskFilter").value;
+    let searchText =
+        document.getElementById("taskSearch").value.toLowerCase();
 
-let filteredTasks = tasks.filter(function(task) {
+    let filter =
+        document.getElementById("taskFilter").value;
 
-    let matchesSearch = task.text.toLowerCase().includes(searchText);
+    let filteredTasks = tasks.filter(function(task) {
 
-    let matchesFilter = true;
+        let matchesSearch =
+            task.text.toLowerCase().includes(searchText);
 
-    if (filter === "completed") {
-        matchesFilter = task.completed;
-    }
+        let matchesFilter = true;
 
-    if (filter === "pending") {
-        matchesFilter = !task.completed;
-    }
+        if (filter === "completed") {
+            matchesFilter = task.completed;
+        }
 
-    return matchesSearch && matchesFilter;
-});
+        if (filter === "pending") {
+            matchesFilter = !task.completed;
+        }
 
-filteredTasks.forEach(function(task) {
+        return matchesSearch && matchesFilter;
 
-    let index = tasks.indexOf(task);
+    });
 
-    taskList.innerHTML += `
-        <div class="task">
 
-            <span
-                class="${task.completed ? "completed" : ""}"
-                onclick="completeTask(${index})"
-            >
-                ${task.completed ? "☑" : "☐"} ${task.text}
-            </span>
+    filteredTasks.forEach(function(task) {
 
-            <button onclick="deleteTask(${index})">
-                🗑️
-            </button>
+        let index = tasks.indexOf(task);
 
-        </div>
-    `;
+        taskList.innerHTML += `
+            <div class="task">
 
-});
+                <span
+                    class="${task.completed ? "completed" : ""}"
+                    onclick="completeTask(${index})"
+                >
+                    ${task.completed ? "☑" : "☐"} ${task.text}
+                </span>
+
+                <button onclick="deleteTask(${index})">
+                    🗑️
+                </button>
+
+            </div>
+        `;
+
+    });
 
 }
 
