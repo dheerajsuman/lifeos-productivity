@@ -154,16 +154,7 @@
 .task-input button:hover {
     opacity: 0.85;
 }
-        .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding: 12px;
-    background: #1b1f2e;
-    border-radius: 8px;
-}
-
+       
 .task span {
     cursor: pointer;
 }
@@ -783,24 +774,7 @@ filteredTasks.forEach(function(task) {
 
     let index = tasks.indexOf(task);
 
-   taskList.innerHTML += `
-    <div class="task">
 
-        <span
-            class="${task.completed ? "completed" : ""}"
-            onclick="completeTask(${index})"
-        >
-            ${task.completed ? "☑" : "☐"} ${task.text}
-        </span>
-
-        <button onclick="deleteTask(${index})">
-            🗑️
-        </button>
-
-    </div>
-`;
-
-.task span {
     cursor: pointer;
 }
 
