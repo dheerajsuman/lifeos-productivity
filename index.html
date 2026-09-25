@@ -715,15 +715,9 @@ body.light .notes-section textarea {
 </div>
 </main>
 
-    </div>
+</div>
 
-</body>
-
-    <h1>LifeOS</h1>
-
-    <p>My Personal Productivity Dashboard</p>
 <script>
-
 let tasks = JSON.parse(localStorage.getItem("lifeosTasks")) || [];
 
 
@@ -856,8 +850,43 @@ function completeTask(index) {
 }
 
 
-function deleteTask(index)
+function deleteTask(index) {
+
+    tasks.splice(index, 1);
+
+    saveTasks();
+
+    renderTasks();
+
+    updateStats();
+
+    updateProgress();
+}
+
+
 function updateStats() {
+
+    let totalTasks = tasks.length;
+
+    let completedTasks = tasks.filter(function(task) {
+        return task.completed;
+    }).length;
+
+    let productivity = 0;
+
+    if (totalTasks > 0) {
+        productivity = Math.round(
+            (completedTasks / totalTasks) * 100
+        );
+    }
+
+    document.getElementById("taskCount").textContent = totalTasks;
+
+    document.getElementById("completedCount").textContent = completedTasks;
+
+    document.getElementById("productivity").textContent =
+        productivity + "%";
+}
 
     let totalTasks = tasks.length;
 
@@ -882,18 +911,6 @@ function updateStats() {
     document.getElementById("productivity").textContent =
         productivity + "%";
 
-}
-    {
-
-   tasks.splice(index, 1);
-
-saveTasks();
-
-updateStats();
-
-updateProgress();
-
-renderTasks();
 }
 
 let currentDate = new Date();
