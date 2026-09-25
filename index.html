@@ -154,6 +154,31 @@
 .task-input button:hover {
     opacity: 0.85;
 }
+        .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 12px;
+    background: #1b1f2e;
+    border-radius: 8px;
+}
+
+.task span {
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.task button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
 .calendar-section {
     margin-top: 35px;
     background: #151824;
@@ -758,17 +783,22 @@ filteredTasks.forEach(function(task) {
 
     let index = tasks.indexOf(task);
 
-    taskList.innerHTML += `
-            <div class="task">
-            .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding: 12px;
-    background: #1b1f2e;
-    border-radius: 8px;
-}
+   taskList.innerHTML += `
+    <div class="task">
+
+        <span
+            class="${task.completed ? "completed" : ""}"
+            onclick="completeTask(${index})"
+        >
+            ${task.completed ? "☑" : "☐"} ${task.text}
+        </span>
+
+        <button onclick="deleteTask(${index})">
+            🗑️
+        </button>
+
+    </div>
+`;
 
 .task span {
     cursor: pointer;
@@ -888,30 +918,6 @@ function updateStats() {
         productivity + "%";
 }
 
-    let totalTasks = tasks.length;
-
-    let completedTasks = tasks.filter(function(task) {
-        return task.completed;
-    }).length;
-
-
-    let productivity = 0;
-
-    if (totalTasks > 0) {
-        productivity = Math.round(
-            (completedTasks / totalTasks) * 100
-        );
-    }
-
-
-    document.getElementById("taskCount").textContent = totalTasks;
-
-    document.getElementById("completedCount").textContent = completedTasks;
-
-    document.getElementById("productivity").textContent =
-        productivity + "%";
-
-}
 
 let currentDate = new Date();
 
